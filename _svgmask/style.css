@@ -18,6 +18,7 @@ body {
 }
 
 .wrap {
+    outline: 1px solid red;
     position: relative;
     width: calc(100% - 40px);
     max-width: 410px;
@@ -38,7 +39,7 @@ body {
 /* --------------------------- */
 .visual {
     --_left: 20px;
-    --_bottom: clamp(32px, 5vw, 44px);
+    --_bottom: clamp(28px, 6vw, 40px);
     /*  */
     position: relative;
     overflow: hidden;
@@ -129,10 +130,10 @@ body {
     position: absolute;
     left: 50%;
     top: 100%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -60%);
     width: calc(100% - 40px);
     max-width: 360px;
-    height: 42px;
+    height: 40px;
     text-align: center;
     font-size: 14px;
     font-weight: bold;
@@ -140,12 +141,12 @@ body {
 
 .wrap.wide .clip {
     left: 20px;
-    transform: translate(0, -50%);
+    transform: translate(0, -60%);
 }
 
 .wrap.medium .clip {
     left: 100%;
-    transform: translate(calc(-100% - 20px), -50%);
+    transform: translate(calc(-100% - 20px), -60%);
 }
 
 /* breaking point는 조정해주세요 */
@@ -181,6 +182,6 @@ body {
     .wrap.wide .clip,
     .wrap.medium .clip {
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -60%);
     }
 }
