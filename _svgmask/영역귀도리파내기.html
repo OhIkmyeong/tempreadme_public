@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 80px;
+            min-height: 200dvh;
+            padding: 40px 0;
+            background: linear-gradient(to bottom, #ccc, #f00);
+        }
+
+        .wrap {
+            position: relative;
+            width: calc(100% - 40px);
+            max-width: 410px;
+            margin: 0 auto;
+        }
+
+        .wrap.wide {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .wrap.medium {
+            width: 100%;
+            max-width: 600px;
+        }
+
+
+        /* --------------------------- */
+        .visual {
+            --_left: 20px;
+            --_bottom: clamp(32px, 5vw, 44px);
+            /*  */
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: clamp(14px, 3.2vw, 20px);
+            /* 마스크 반복 */
+            mask-repeat: no-repeat;
+
+            /* 마스크 이미지 */
+            -webkit-mask-image:
+                linear-gradient(#000 0 0),
+                url("./mask.svg");
+            mask-image:
+                linear-gradient(#000 0 0),
+                url("./mask.svg");
+
+            /* 빼기모드 */
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+
+            /* 마스크 사이즈 */
+            -webkit-mask-size:
+                /* 사각형 */
+                100% 101%,
+                /* 귀도리 */
+                min(calc(100% - 40px), 360px);
+            mask-size:
+                /* 사각형 */
+                100% 101%,
+                /* 귀도리 */
+                min(calc(100% - 40px), 360px);
+
+            /* 마스크 위치 */
+            -webkit-mask-position:
+                /* 사각형 */
+                left top,
+                /* 귀도리 */
+                center calc(100% + var(--_bottom));
+            mask-position:
+                /* 사각형 */
+                left top,
+                /* 귀도리 */
+                center calc(100% + var(--_bottom));
+        }
+
+        .wrap.wide .visual {
+            border-radius: 0;
+            -webkit-mask-position:
+                /* 사각형 */
+                left top,
+                /* 귀도리 */
+                var(--_left) calc(100% + var(--_bottom));
+            mask-position:
+                /* 사각형 */
+                left top,
+                /* 귀도리 */
+                var(--_left) calc(100% + var(--_bottom));
+        }
+
+        .wrap.medium .visual {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            -webkit-mask-position:
+                /* 사각형 */
+                left top,
+                /* 귀도리 */
+                calc(100% - var(--_left)) calc(100% + var(--_bottom));
+            mask-position:
+                /* 사각형 */
+                left top,
+                /* 귀도리 */
+                calc(100% - var(--_left)) calc(100% + var(--_bottom));
+        }
+
+        .visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --------------------------- */
+        .clip {
+            /* outline: 3px dotted black; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            transform: translate(-50%, -50%);
+            width: calc(100% - 40px);
+            max-width: 360px;
+            height: 42px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .wrap.wide .clip {
+            left: 20px;
+            transform: translate(0, -50%);
+        }
+
+        .wrap.medium .clip {
+            left: 100%;
+            transform: translate(calc(-100% - 20px), -50%);
+        }
+
+        /* breaking point는 조정해주세요 */
+        @media all and (max-width:1200px) {
+
+            .wrap.wide .visual,
+            .wrap.medium .visual {
+                /* 마스크 위치 */
+                -webkit-mask-position:
+                    /* 사각형 */
+                    left top,
+                    /* 귀도리 */
+                    center calc(100% + var(--_bottom));
+                mask-position:
+                    /* 사각형 */
+                    left top,
+                    /* 귀도리 */
+                    center calc(100% + var(--_bottom));
+
+                /* 마스크 사이즈 */
+                -webkit-mask-size:
+                    /* 사각형 */
+                    100% 101%,
+                    /* 귀도리 */
+                    min(calc(100% - 40px), 360px);
+                mask-size:
+                    /* 사각형 */
+                    100% 101%,
+                    /* 귀도리 */
+                    min(calc(100% - 80px), 360px);
+            }
+
+            .wrap.wide .clip,
+            .wrap.medium .clip {
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap wide">
+        <div class="visual">
+            <img src="https://img2.stibee.com/104972_3466738_1783040005041729933.png" />
+        </div>
+        <div class="clip">HELLO WORLD</div>
+    </div>
+    <div class="wrap medium">
+        <div class="visual">
+            <img src="https://img2.stibee.com/104972_3466738_1783040005041729933.png" />
+        </div>
+        <div class="clip">HELLO WORLD</div>
+    </div>
+    <div class="wrap">
+        <div class="visual">
+            <img src="https://img2.stibee.com/104972_3466738_1783040005041729933.png" />
+        </div>
+        <div class="clip">HELLO WORLD</div>
+    </div>
+    <div class="wrap">
+        <div class="visual">
+            <img src="https://img2.stibee.com/104972_3466738_1783040005041729933.png" />
+        </div>
+        <div class="clip">HELLO WORLD</div>
+    </div>
+    <div class="wrap">
+        <div class="visual">
+            <img src="https://img2.stibee.com/104972_3466738_1783040005041729933.png" />
+        </div>
+        <div class="clip">HELLO WORLD</div>
+    </div>
+    <div class="wrap">
+        <div class="visual">
+            <img src="https://img2.stibee.com/104972_3466738_1783040005041729933.png" />
+        </div>
+        <div class="clip">HELLO WORLD</div>
+    </div>
+</body>
+
+</html>
