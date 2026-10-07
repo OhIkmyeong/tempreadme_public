@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #ccc;
+}
+
+section {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid black;
+}
+
+article {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+    background: #eee;
+    border: 1px dashed blue;
+    text-align: center;
+}
+
+/* ================================= */
+/* ================================= */
+/* ================================= */
+.top {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: stretch;
+    gap: 20px 40px;
+}
+
+.top-slide {
+    flex: 842 1 0;
+    min-width: 0;
+    aspect-ratio: 16 / 9;
+}
+
+.top-other {
+    flex: 476 1 0;
+    min-width: 0;
+}
+
+.top-btns {
+    width: 100%;
+}
+
+@media all and (max-width:961px) {
+    .top-slide,
+    .top-other {
+        flex: 0 1 auto;
+        width: 100%;
+    }
+}
+
+/* ================================= */
+/* ================================= */
+/* ================================= */
+/* [btm] */
+.btm {
+    display: flex;
+    flex-flow:row wrap;
+    gap:20px 40px;
+}
+
+.btm-board {
+    flex:855 1 0;
+}
+
+.btm-popup {
+    flex:535 1 0;
+    aspect-ratio: 534 / 312;
+}
+@media all and (max-width:900px) {
+    .btm-board,
+    .btm-popup  {
+        flex:0 1 100%;
+        width:100%;
+    }
+}
