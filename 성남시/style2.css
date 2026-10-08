@@ -48,34 +48,26 @@ article {
 /* ================================= */
 /* ================================= */
 .top {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: 842fr 476fr;
     gap: 20px 40px;
-}
-
-.top-slide {
-    flex: 842 1 0;
 }
 
 .top-slide .box {
     aspect-ratio: 16 / 9;
 }
 
-.top-other {
-    flex: 476 1 0;
-}
-
 .top-btns {
+    grid-column: 1 / span 2;
     width: 100%;
 }
 
 @media all and (max-width:960px) {
-
-    .top-slide,
-    .top-other {
-        flex: 0 1 auto;
-        width: 100%;
+    .top {
+        grid-template-columns: 1fr;
+    }
+    .top-btns {
+        grid-column: 1 / 2;
     }
 }
 
